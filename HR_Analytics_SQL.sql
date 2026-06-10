@@ -1,0 +1,13 @@
+CREATE DATABASE hr_analytics;
+use hr_analytics;
+show tables;
+SELECT COUNT(*) AS Total_Employees FROM hr_analytics_cleaned;
+select attrition, count(*) as employee_count from hr_analytics_cleaned group by attrition;
+SELECT DISTINCT Attrition FROM hr_analytics_cleaned;
+SELECT ROUND(SUM(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2 AS Attrition_Rate FROM hr_analytics_cleaned;
+SELECT Department, COUNT(*) AS Attrition_Count FROM hr_analytics_cleaned WHERE Attrition='Yes' GROUP BY Department ORDER BY Attrition_Count DESC;
+SELECT Gender,COUNT(*) AS Attrition_Count FROM hr_analytics_cleaned WHERE Attrition='Yes'GROUP BY Gender;
+select Jobrole,count(*) as attrition_count from hr_analytics_cleaned where attrition="yes" group by Jobrole order by attrition_count DESC;
+select round(avg(age),0) as avg_age from hr_analytics_cleaned;
+select round(avg(monthlyincome),0) as avg_salary from hr_analytics_cleaned; 
+select educationfield,count(*) as employee_count from hr_analytics_cleaned group by educationfield order by employee_count desc;
